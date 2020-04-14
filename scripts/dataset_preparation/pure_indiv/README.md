@@ -11,7 +11,7 @@ The subdirectories are organised as follows:
   * HFE145-july2017
   * SNU719-DMSO-july2017
   
-* july_2017
+* sept_2017
   * NCC24-DMSO-sept2017
   * SNU719-Aza-sept2017
   * YCC10-Aza-sept2017
