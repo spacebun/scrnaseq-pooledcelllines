@@ -3,7 +3,7 @@ objects for each of the pure cell lines as listed below.
 
 The subdirectories are organised as follows:
 
-* april_2017
+* april_2017. 
 ⋅⋅⋅SNU719-Aza-april2017
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
