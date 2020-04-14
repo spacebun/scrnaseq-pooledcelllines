@@ -1,7 +1,6 @@
 Contains scripts that read in gene expression matrices and performs quality control, normalization, scaling, and PCA. 
 
-This directory contains the scripts for the creation of pre-processed Seurat
-objects for each of the pure cell lines as listed below.
+This directory contains the scripts for the creation of pre-processed Seurat objects for each of the samples as listed below.
 
 The subdirectories are organised as follows:
 * pure_indiv
