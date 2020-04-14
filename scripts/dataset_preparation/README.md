@@ -18,6 +18,10 @@ The subdirectories are organised as follows:
     * SNU719-Aza-sept2017
     * YCC10-Aza-sept2017
     * YCC10-DMSO-sept2017
+    
+* mixed_indiv
+  * mixed_DMSO
+  * mixed_Aza
   
 Overview of each script:
 1. Read in data and create Seurat object, adding information about sample
