@@ -2,15 +2,10 @@ This directory contains scripts written in R that reads in gene expression matri
 
 The subdirectories are organised as follows:
 * mono
-  * april_2017
     * SNU719-Aza-april2017
     * SNU719-DMSO-april2017
-
-  * july_2017
     * HFE145-july2017
     * SNU719-DMSO-july2017
-
-  * july_2017
     * NCC24-DMSO-sept2017
     * SNU719-Aza-sept2017
     * YCC10-Aza-sept2017
