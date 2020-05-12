@@ -2,7 +2,8 @@ This directory contains the results of analysis of the gastric cancer cell lines
 
 The subdirectories are organised as follows:
 
-* `dataset preparation`: For each sample, read in gene expression matrix and perform quality control, SCTRansform, RunPCA.
+* `dataset preparation`: For each sample, read in gene expression matrix and perform quality control, SCTRansform, RunPCA. To generate the Seurat objects of each sample, please run scripts [here](https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts/dataset%20preparation).
+
   * `mono`
     * `april_2017`
       * SNU719-Aza-april2017
@@ -19,7 +20,7 @@ The subdirectories are organised as follows:
     * `co-DMSO`
     * `co-Aza`
     
-* `cell line assignment`: For the samples in co-culture, score and predict cells for similarity to SNU719 and NCC24 using the data of SNU719 and NCC24 in monoculture. Assign SNU719 and NCC24 cells in co-culture as well.
+* `cell line assignment`: Contains UMAP plots of assigned SNU719 and NCC24 cells in co-culture datasets. To generate the Seurat objects, please refer to and run the scripts in [here](master/scripts/cell%20line%20assignment).
   * `DMSO`: Assignment of cells in co-culture treated with DMSO.
   * `Aza`Assignment of cells in co-culture treated with Aza.
 
