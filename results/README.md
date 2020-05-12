@@ -2,6 +2,13 @@ This directory contains the results of analysis of the gastric cancer cell lines
 
 The subdirectories are organised as follows:
 
+* `cellranger-outs`: Contains the files of the cell lines in monoculture to be read in in `dataset preparation`. Also contains summary metrics of the samples. Generated using the `cellranger count` command from the `.FASTQ` files.
+
+
+* `cellranger-outs-mixed`: Contains the files of the cell lines in co-culture to be read in in `dataset preparation`. Also contains summary metrics of the samples. Generated using the `cellranger count` command from the `.FASTQ` files.
+
+
+
 * `dataset preparation`: For each sample, read in gene expression matrix and perform quality control, SCTRansform, RunPCA. To generate the Seurat objects of each sample, please run scripts [here](https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts/dataset%20preparation).
 
   * `mono`
