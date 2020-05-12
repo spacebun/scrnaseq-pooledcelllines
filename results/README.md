@@ -15,9 +15,9 @@ The subdirectories are organised as follows:
       * SNU719-Aza-sept2017
       * YCC10-Aza-sept2017
       * YCC10-DMSO-sept2017
-  * co
-    * co-DMSO
-    * co-Aza
+  * `co`
+    * `co-DMSO`
+    * `co-Aza`
     
 * `cell line assignment`: For the samples in co-culture, score and predict cells for similarity to SNU719 and NCC24 using the data of SNU719 and NCC24 in monoculture. Assign SNU719 and NCC24 cells in co-culture as well.
   * `DMSO`: Assignment of cells in co-culture treated with DMSO.
