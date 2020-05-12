@@ -4,9 +4,9 @@
 This repository contains the scripts and results of sorting and analysing scRNA-seq of gastric cancer cell lines in monoculture and in a pooled co-culture. 
 
 ### Scripts
-The original data of each sample was given in a `.FASTQ` format. They were first processed to gene expression matrices with command line scripts that call `cellranger count` on the Duke-NUS HPC, with the scripts in https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts/cellranger. 
+The original data of each sample was given in a `.FASTQ` format. They were first processed to gene expression matrices with command line scripts that call `cellranger count` on the Duke-NUS HPC, with the scripts in the [cellranger folder](https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts/cellranger).
 
-The remaining sub-folders in https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts represents the phases of the pipeline. In these phases, the scripts are written in [R](http://lib.stat.cmu.edu/R/CRAN/) **(version 3.6.1)** and were run on [RStudio](https://rstudio.com/products/rstudio/) **(version 1.2.5033)**.
+The remaining sub-folders in [scripts](https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts) represents the phases of the pipeline. In these phases, the scripts are written in [R](http://lib.stat.cmu.edu/R/CRAN/) **(version 3.6.1)** and were run on [RStudio](https://rstudio.com/products/rstudio/) **(version 1.2.5033)**.
 
 | s/n | Phase | Purpose |
 | -----| ----- | -------| 
