@@ -1,0 +1,1 @@
+Contains the annotations used to label differentially expressed genes. It is called in scripts in the [analysis](https://github.com/spacebun/scrnaseq-pooledcelllines/tree/master/scripts/analysis) folder.
