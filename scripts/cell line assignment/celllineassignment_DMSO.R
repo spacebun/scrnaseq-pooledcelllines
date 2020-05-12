@@ -24,15 +24,15 @@ library(beepr)
 options(future.globals.maxSize = 4000 * 1024^2)
 
 ## Set working directory
-setwd("/handover/results/cell line assignment/DMSO")
+setwd("/scrnaseq/results/cell line assignment/DMSO")
 
 ## Load datasets
 # Load DMSO-treated SNU719 in monoculture and DMSO-treated NCC24 in monoculture for building reference dataset
-load("/handover/results/dataset preparation/mono/april2017/SNU719-DMSO-april2017/SCT-SNU719-DMSO-april2017.RData")
-load("/handover/results/dataset preparation/mono/july2017/SNU719-DMSO-july2017/SCT-SNU719-DMSO-july2017.RData")
-load("/handover/results/dataset preparation/mono/sept2017/NCC24-DMSO-sept2017/SCT-NCC24-DMSO-sept2017.RData")
+load("/scrnaseq/results/dataset preparation/mono/april2017/SNU719-DMSO-april2017/SCT-SNU719-DMSO-april2017.RData")
+load("/scrnaseq/results/dataset preparation/mono/july2017/SNU719-DMSO-july2017/SCT-SNU719-DMSO-july2017.RData")
+load("/scrnaseq/results/dataset preparation/mono/sept2017/NCC24-DMSO-sept2017/SCT-NCC24-DMSO-sept2017.RData")
 # Load DMSO-treated co-culture
-load("/handover/results/dataset preparation/co/co-DMSO/SCT-co_DMSO.RData")
+load("/scrnaseq/results/dataset preparation/co/co-DMSO/SCT-co_DMSO.RData")
 
 # Forming reference dataset -----------------------------------------------------------
 # Merge SNU719 and NCC24  to form a reference (object: monoculture.DMSO.merged)
@@ -160,6 +160,15 @@ dev.off()
 coculture.DMSO.assigned <- query.dataset
 table(Idents(coculture.DMSO.assigned))
 coculture.DMSO.assigned$CellLine <- Idents(coculture.DMSO.assigned)
+
+Idents(coculture.DMSO.assigned)<-coculture.DMSO.assigned$CellLine
+coculture.DMSO.assigned$CellLine.Treatment<- paste(Idents(coculture.DMSO.assigned), coculture.DMSO.assigned$Treatment, sep = "_")
+# CellLine.Culture
+Idents(coculture.DMSO.assigned)<-coculture.DMSO.assigned$CellLine
+coculture.DMSO.assigned$CellLine.Culture <- paste(Idents(coculture.DMSO.assigned), coculture.DMSO.assigned$Culture, sep = "_")
+# CellLine.Treatment.Culture
+Idents(coculture.DMSO.assigned)<-coculture.DMSO.assigned$CellLine.Treatment
+coculture.DMSO.assigned$CellLine.Treatment.Culture <- paste(Idents(coculture.DMSO.assigned), coculture.DMSO.assigned$Culture, sep = "_")
 
 save(coculture.DMSO.assigned, file="coculture-DMSO-assigned.RData")
 

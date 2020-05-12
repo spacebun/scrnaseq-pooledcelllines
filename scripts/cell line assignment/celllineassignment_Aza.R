@@ -25,18 +25,15 @@ library(beepr)
 options(future.globals.maxSize = 4000 * 1024^2)
 
 ## Set working directory
-dir.create("/scrnaseq/results/celllinesassignment_Aza")
-setwd("/scrnaseq/results/celllinesassignment_Aza")
+setwd("/scrnaseq/results/cell line assignment/Aza")
 
 ## Load datasets
 # Load Aza-treated SNU719 in monoculture and Aza-treated NCC24 in monoculture for building reference dataset
 load("/scrnaseq/results/dataset preparation/mono/april2017/SNU719-Aza-april2017/SCT-SNU719-Aza-april2017.RData")
-load("/scrnaseq/data/SNU719-Aza-sept2017.RData")
-load("/scrnaseq/data/NCC24-DMSO-sept2017.RData")
-
-# Load Aza-treated co-culture
-load("/scrnaseq/data/coculture-Aza.RData")
-
+load("/scrnaseq/results/dataset preparation/mono/sept2017/SNU719-Aza-sept2017/SCT-SNU719-Aza-sept2017.RData")
+load("/scrnaseq/results/dataset preparation/mono/sept2017/NCC24-DMSO-sept2017/SCT-NCC24-DMSO-sept2017.RData")
+# Load DMSO-treated co-culture
+load("/scrnaseq/results/dataset preparation/co/co-Aza/SCT-co_Aza.RData")
 # Forming reference dataset -----------------------------------------------------------
 # Merge SNU719 and NCC24  to form a reference (object: monoculture.Aza.merged)
 monoculture.Aza.merged <- merge(x = NCC24.DMSO.sept2017.seuratobject,
@@ -71,7 +68,7 @@ DimPlot(monoculture.Aza.merged, reduction = "umap", group.by = "CellLine",
 dev.off()
 
 # Save reference dataset
-save(monoculture.Aza.merged, file="/scrnaseq/data/monoculture_Aza_merged.RData")
+save(monoculture.Aza.merged, file="monoculture_Aza_merged.RData")
 
 # Cell line assignment in co-culture -----------------------------------------------------------
 reference.dataset <- monoculture.Aza.merged
@@ -157,7 +154,23 @@ coculture.Aza.assigned <- query.dataset
 table(Idents(coculture.Aza.assigned))
 coculture.Aza.assigned$CellLine <- Idents(coculture.Aza.assigned)
 
-save(coculture.Aza.assigned, file="/scrnaseq/data/coculture-Aza-assigned.RData")
+# Store Idents (with clusters labeled) as new metadata in coculture.Aza.assigned
+coculture.Aza.assigned <- query.dataset
+table(Idents(coculture.Aza.assigned))
+coculture.Aza.assigned$CellLine <- Idents(coculture.Aza.assigned)
+
+Idents(coculture.Aza.assigned)<-coculture.Aza.assigned$CellLine
+coculture.Aza.assigned$CellLine.Treatment<- paste(Idents(coculture.Aza.assigned), coculture.Aza.assigned$Treatment, sep = "_")
+# CellLine.Culture
+Idents(coculture.Aza.assigned)<-coculture.Aza.assigned$CellLine
+coculture.Aza.assigned$CellLine.Culture <- paste(Idents(coculture.Aza.assigned), coculture.Aza.assigned$Culture, sep = "_")
+# CellLine.Treatment.Culture
+Idents(coculture.Aza.assigned)<-coculture.Aza.assigned$CellLine.Treatment
+coculture.Aza.assigned$CellLine.Treatment.Culture <- paste(Idents(coculture.Aza.assigned), coculture.Aza.assigned$Culture, sep = "_")
+
+
+
+save(coculture.Aza.assigned, file="coculture-Aza-assigned.RData")
 
 png("UMAP of assigned Aza-treated SNU719 and NCC24 in co-culture other clusters grey.png")
 DimPlot(coculture.Aza.assigned, reduction = "umap", group.by = "CellLine",
@@ -173,4 +186,4 @@ plot <- DimPlot(coculture.Aza.assigned, reduction = "umap", group.by = "CellLine
 # select.cells <- CellSelector(plot = plot)
 # Idents(coculture.Aza.assigned, cells = select.cells) <- "SNU719_filtered"
 # coculture.Aza.assigned$CellLine <- Idents(coculture.Aza.assigned)
-# save(coculture.Aza.assigned, file="/scrnaseq/data/coculture-Aza-assigned-filtered.RData")
+# save(coculture.Aza.assigned, file="coculture-Aza-assigned-filtered.RData")
